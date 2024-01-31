@@ -55,13 +55,10 @@ CREATE TABLE classrooms
 INSERT INTO classrooms
     (id, student_id, section)
 VALUES
-    (1, 101, 'A'),
-    (2, 102, 'B'),
-    (3, 103, 'A'),
-    (4, 104, 'C'),
-    (5, 105, 'B'),
-    (6, 106, 'C'),
-    (7, 107, 'A');
+    (1, 2, 'A'),
+    (2, 1, 'B'),
+    (3,4, 'A'),
+    (4, 3, 'C');
 
 --INNER JOIN
 SELECT *
