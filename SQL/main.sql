@@ -44,5 +44,45 @@ SELECT *
 FROM students
 ORDER BY age DESC;
 
+--JOINS ACTIVITY
+CREATE TABLE classrooms
+(
+    id INT PRIMARY KEY,
+    student_id INT,
+    section VARCHAR(255)
+);
+
+INSERT INTO classrooms
+    (id, student_id, section)
+VALUES
+    (1, 101, 'A'),
+    (2, 102, 'B'),
+    (3, 103, 'A'),
+    (4, 104, 'C'),
+    (5, 105, 'B'),
+    (6, 106, 'C'),
+    (7, 107, 'A');
+
+--INNER JOIN
+SELECT *
+FROM students
+    INNER JOIN classrooms ON students.id = classrooms.student_id;
+
+--LEFT JOIN
+SELECT *
+FROM students
+    LEFT JOIN classrooms ON students.id = classrooms.student_id;
+
+--RIGHT JOIN
+SELECT *
+FROM students
+    RIGHT JOIN classrooms ON students.id = classrooms.student_id;
+
+--FULL JOIN 
+SELECT *
+FROM students
+    FULL JOIN classrooms ON students.id = classrooms.student_id;
+
+
 
 
