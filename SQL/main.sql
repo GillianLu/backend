@@ -14,7 +14,7 @@ CREATE TABLE students
 INSERT INTO students
     (id, first_name, middle_name, last_name, age, location)
 VALUES(1, 'Gillian', 'Gonzales', 'Lu', 22, 'Manila'),
-    (2, 'John', 'Doe', 'Smith', 20, 'New York'),
+    (2, 'Christia', 'Doe', 'Smith', 20, 'New York'),
     (3, 'Jane', 'Alice', 'Brown', 19, 'Los Angeles'),
     (4, 'Mike', 'Andrew', 'Johnson', 21, 'Chicago');
 
