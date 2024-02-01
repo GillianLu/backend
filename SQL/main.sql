@@ -80,6 +80,46 @@ SELECT *
 FROM students
     FULL JOIN classrooms ON students.id = classrooms.student_id;
 
+-- JOINS WITH ENUM activity
 
+CREATE TYPE grades AS ENUM
+('A', 'B', 'C', 'D', 'E', 'F');
+
+CREATE TABLE research_papers
+(
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    grade grades,
+    CONSTRAINT student_table FOREIGN KEY (student_id) REFERENCES students(id),
+    CONSTRAINT check_grades CHECK(grade in ('A', 'B', 'C', 'D', 'E', 'F') OR grade IS NULL)
+);
+
+INSERT INTO research_papers
+    (student_id, grade)
+VALUES
+    (1, 'A'),
+    (1, 'B'),
+    (2, 'A'),
+    (3, NULL),
+    (4, 'C'),
+    (5, 'D'),
+    (5, 'E'),
+    (6, NULL),
+    (7, 'A'),
+    (8, 'B');
+
+-- Query all students with multiple research papers (select first_name, last_name, and number_of_research_papers only)
+SELECT students.first_name, students.last_name, COUNT(*) AS number_of_research_papers
+FROM students
+    INNER JOIN research_papers ON students.id = research_papers.student_id
+GROUP BY students.id
+HAVING COUNT(*) > 1;
+
+
+-- Query all students with ungraded research papers (select first_name, last_name, research_paper_id, and grade only)
+SELECT students.first_name, students.last_name, research_papers.id AS research_paper_id, research_papers.grade
+FROM students
+    JOIN research_papers ON students.id = research_papers.student_id
+WHERE research_papers.grade IS NULL;
 
 
